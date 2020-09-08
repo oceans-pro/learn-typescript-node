@@ -1,2 +1,2 @@
 // import './model/user'
-import './model/boot.test'
+import('./model/book.test')

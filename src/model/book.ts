@@ -6,7 +6,7 @@ import connection from "./index";
 class Book {
     id: number;
     bookName: string;
-    bookPrice: string;
+    bookPrice: number;
 }
 
 let createStr = `
@@ -22,6 +22,10 @@ let delStr = `
 delete from 表_书籍
 `;
 
+let dropStr = `
+drop table 表_书籍
+`;
+
 function createTableWithPromise() {
     return new Promise((resolve, reject) => {
         connection.query(createStr, (err, value) => {
@@ -33,20 +37,34 @@ function createTableWithPromise() {
     });
 }
 
-function deleteTableWithPromise() {
+function deleteDataWithPromise() {
     return new Promise((resolve, reject) => {
         connection.query(delStr, (err, value) => {
             if (err) {
                 reject(err);
             }
+            connection.end();
             resolve(value);
         });
     });
 }
 
 
+function dropTableWithPromise() {
+    return new Promise((resolve, reject) => {
+        connection.query(dropStr, (err, value) => {
+            if (err) {
+                reject(err);
+            }
+            connection.end();
+            resolve(value);
+        });
+    });
+}
+
 export {
     Book,
     createTableWithPromise,
-    deleteTableWithPromise
+    deleteDataWithPromise,
+    dropTableWithPromise
 };
