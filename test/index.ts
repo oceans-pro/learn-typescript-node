@@ -1,2 +1,2 @@
-// import './model/user'
-import('./model/book.test')
+import './model/user.test'
+// import('./dao/book.test')

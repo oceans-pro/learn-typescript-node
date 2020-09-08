@@ -18,10 +18,12 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 
-const homeRouter = require('./routes/home')
-const usersRouter = require('./routes/user')
+const homeRouter = require('./controller/home')
+const usersRouter = require('./controller/user')
+const imageRouter = require('./controller/image')
 app.use('/', homeRouter)
 app.use('/user', usersRouter)
+app.use('/image', imageRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

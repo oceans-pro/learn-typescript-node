@@ -32,6 +32,7 @@ function createTableWithPromise() {
             if (err) {
                 reject(err);
             }
+            connection.end();
             resolve(value);
         });
     });

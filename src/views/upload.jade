@@ -1,0 +1,33 @@
+extends layout
+block content
+    input(type="file", name="", id="file")
+
+    script.
+      function uploadFile() {
+        console.log('uploading...')
+        let fileObj = document.getElementById('file').files[0]
+        let url = 'http://localhost:3000/image/file_upload'
+        let form = new FormData()
+        form.append('file', fileObj)
+        let xhr = new XMLHttpRequest()
+        xhr.open('post', url, true)
+        xhr.onload = uploadComplete
+        xhr.upload.onloadstart = function() {
+          console.log(new Date())
+        }
+        xhr.onerror = uploadErr
+        xhr.send(form)
+      }
+      function uploadComplete(e) {
+        console.log(e.target.responseText)
+        if (e.target.responseText === 'ok') {
+          console.log('success')
+        } else {
+          console.log('failed')
+        }
+      }
+      function uploadErr() {
+        console.log('err-uploadErr')
+      }
+
+      document.getElementById('file').addEventListener('change', uploadFile)
