@@ -1,10 +1,11 @@
+## 
+keywords: typescript node 
 ## 使用
 
 ```sh
 npm install
 ```
 
-或者
 
 ```sh
 npm install express-generator -g
