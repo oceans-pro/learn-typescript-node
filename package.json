@@ -1,0 +1,30 @@
+{
+  "name": "hello-world",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node run serve",
+    "serve": "node ./dist/server.js",
+    "build": "tsc && node build/cp.js",
+    "dev": "cross-env NODE_ENV=development nodemon -e ts,tsx --exec 'ts-node' ./server.ts",
+    "test": "ts-node ./test/index.ts"
+  },
+  "dependencies": {
+    "@types/mysql": "^2.15.15",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "shelljs": "^0.8.4",
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "@types/node": "^14.6.4",
+    "cross-env": "^7.0.2",
+    "ts-node": "^9.0.0"
+  }
+}
